@@ -1,0 +1,56 @@
+<div class="wrapper">
+    <app-nav-admin></app-nav-admin>
+    <div class="content">
+        <div class="card">
+            <div class="cart mx-auto">
+                <div class="title d-flex justify-content-between">
+                    <h4><b>Usuarios</b></h4>
+                    <span class="text-muted align-self-center">{{ users.length }} usuarios</span>
+                </div>
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Nombre</th>
+                                <th>Dirección</th>
+                                <th>Teléfono</th>
+                                <th>Correo</th>
+                                <th>Rol</th>
+                                <th>Estatus</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let user of paginatedUsers">
+                                <td>{{ user.nombre }} {{ user.aPaterno }} {{ user.aMaterno }}</td>
+                                <td>{{ user.direccion }}</td>
+                                <td>{{ user.telefono }}</td>
+                                <td>{{ user.correo }}</td>
+                                <td>{{ user.rol }}</td>
+                                <td>{{ user.status }}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <nav>
+                    <ul class="pagination justify-content-center">
+                        <li class="page-item" [class.disabled]="currentPage === 1">
+                            <a class="page-link" (click)="changePage(currentPage - 1)" aria-label="Previous">
+                                <span aria-hidden="true">&laquo;</span>
+                            </a>
+                        </li>
+                        <li class="page-item"
+                            *ngFor="let page of [].constructor(Math.ceil(users.length / itemsPerPage)); let i = index"
+                            [class.active]="currentPage === i + 1">
+                            <a class="page-link" (click)="changePage(i + 1)">{{ i + 1 }}</a>
+                        </li>
+                        <li class="page-item" [class.disabled]="currentPage === Math.ceil(users.length / itemsPerPage)">
+                            <a class="page-link" (click)="changePage(currentPage + 1)" aria-label="Next">
+                                <span aria-hidden="true">&raquo;</span>
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,101 @@
+/* Asegurarse de que el cuerpo y el contenedor principal del componente ocupen todo el alto */
+:host {
+    display: block;
+    height: 100vh;
+    width: 100vw;
+    overflow: hidden;
+}
+
+.hero {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.8)), url('/assets/images/user-home.jpg');
+    height: 100%;
+    width: 100%;
+    background-size: cover;
+    background-position: center center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.banner-text {
+    text-align: center;
+    color: #fff;
+}
+
+.banner-text p {
+    letter-spacing: 2px;
+}
+
+.banner-btn a {
+    border: 1px solid #fff;
+    border-radius: 50px;
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 10px 50px;
+    display: inline-block;
+    margin-top: 15px;
+    color: #fff;
+    transition: all .6s;
+}
+
+.banner-btn a:hover {
+    background: #fff;
+    color: #000;
+}
+
+.text-area {
+    font-size: 70px;
+    text-transform: uppercase;
+    font-weight: 700;
+}
+
+.text-area span {
+    color: orange;
+    opacity: 0;
+    transform: translate(0, -100px) rotate(360deg) scale(0);
+    animation: animate 5s forwards;
+}
+
+.text-area span {
+    display: inline-block;
+}
+
+.text-area span:nth-of-type(1) {
+    animation-delay: .1s;
+}
+
+.text-area span:nth-of-type(2) {
+    animation-delay: .2s;
+}
+
+.text-area span:nth-of-type(3) {
+    animation-delay: .3s;
+}
+
+.text-area span:nth-of-type(4) {
+    animation-delay: .4s;
+}
+
+.text-area span:nth-of-type(5) {
+    animation-delay: .5s;
+}
+
+.text-area span:nth-of-type(6) {
+    animation-delay: .6s;
+}
+
+.text-area span:nth-of-type(7) {
+    animation-delay: .7s;
+}
+
+.text-area span:nth-of-type(8) {
+    animation-delay: .8s;
+}
+
+@keyframes animate {
+    to {
+        opacity: 1;
+        transform: translate(0, 0) rotate(0) scale(1);
+    }
+}

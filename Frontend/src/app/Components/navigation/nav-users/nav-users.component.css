@@ -1,0 +1,33 @@
+.nav-link {
+    margin-right: 10px;
+    margin-left: 10px;
+}
+
+.nav-link:hover {
+    border-radius: 5px;
+    background-color: rgb(221, 221, 221);
+}
+
+.position-relative {
+    position: relative;
+}
+
+.showNumberCart {
+    position: absolute;
+    top: -5px;
+    /* Ajusta la posición según sea necesario */
+    right: -10px;
+    /* Ajusta la posición según sea necesario */
+    background-color: red;
+    /* Color de fondo del círculo */
+    color: white;
+    /* Color del texto */
+    border-radius: 50%;
+    /* Hace que el contenedor sea un círculo */
+    padding: 2px 6px;
+    /* Ajusta el espacio interno para hacer un círculo */
+    font-size: 12px;
+    /* Tamaño del texto */
+    font-weight: bold;
+    /* Grosor del texto */
+}

@@ -1,0 +1,74 @@
+
+.container{
+    align-items: center;
+    text-align: center;
+}
+
+.container h1{
+    margin-bottom: 20px;
+}
+
+#product-cards {
+    font-family: 'Roboto Slab', serif;
+    margin-top: 50px;
+}
+
+#product-cards .card-shop {
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    margin-bottom: 30px;
+    border-radius: 20px;
+}
+
+#product-cards h3 {
+    letter-spacing: 3px;
+    color: #1c1c50;
+    font-family: sans-serif;
+    font-size: 25px;
+}
+
+#product-cards h5 span {
+    float: right;
+    color: #1c1c50;
+    cursor: pointer;
+}
+
+#product-cards p {
+    font-family: arial;
+    font-size: 15px;
+}
+
+.button-carta {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+    margin-bottom: 20px;
+    /* Asegúrate de que el margen inferior está aquí */
+    text-decoration: none;
+    letter-spacing: 5px;
+    border-radius: 5px;
+    width: 200px;
+    height: 32px;
+    color: #1c1c50;
+    font-weight: bold;
+    background: transparent;
+    border: 2px solid #1c1c50;
+    transition: 0.5s ease;
+}
+
+.button-carta:hover {
+    background-color: #1c1c50;
+    color: white;
+}
+
+.card-body {
+    text-align: center;
+}
+
+.animated-card {
+    transition: transform 0.3s ease;
+}
+
+.animated-card:hover {
+    transform: scale(1.05);
+}

@@ -1,0 +1,46 @@
+<app-nav-users></app-nav-users>
+
+<div class="container" *ngIf="ocultarLogin">
+    <div class="container-fluid row border rounded-5 p-3 bg-white shadow box-area">
+        <div class="col-md-6 img-container">
+            <img src="../../../../assets/images/auth-login.jpeg" alt="Image Description" class="img-fluid rounded float-start">
+        </div>
+        <div class="col-md-6 preview px-4 px-lg-5">
+            <div class="header-text mb-4">
+                <h2>Bienvenido</h2>
+                <p>Estamos felices que volvieras.</p>
+            </div>
+            <form (submit)="login()" class="needs-validation" novalidate>
+                <div class="row g-3">
+                    <div class="col-md-12">
+                        <input type="text" class="form-control" name="nombre" [(ngModel)]="user.email" value="" placeholder="Correo">
+                    </div>
+                    <div class="col-md-12">
+                        <label for="password" class="form-label">Contraseña:</label>
+                        <div class="input-group showPassword">
+                            <input id="password" [type]="showPassword ? 'text' : 'password'" name="password" [(ngModel)]="user.password"
+                                class="form-control" #passwordField="ngModel" [required]="enablePassword">
+                            <button type="button"
+                                class="btn btn-showpassword btn-outline-secondary position-absolute end-0"
+                                (click)="togglePasswordVisibility()">
+                                <i class="bi" [ngClass]="showPassword ? 'bi-eye-slash' : 'bi-eye'"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 mt-4 text-center">
+                    <button class="btn btn-primary" type="submit">Iniciar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<div class="mostrarformulario" *ngIf="mostrarFormularioVerificacion">
+    <form (submit)="verifiedCode()">
+        <input type="text" class="form-control" id="exampleFormControlInput1"
+            [(ngModel)]="codeVerified.codigoVerificacion" name="codigoVerificacion"
+            placeholder="Introduce tu código de verificación" autocomplete="off">
+        <button type="submit">Verificar</button>
+    </form>
+</div>

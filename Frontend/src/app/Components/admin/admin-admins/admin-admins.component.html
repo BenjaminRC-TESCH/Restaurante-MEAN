@@ -1,0 +1,131 @@
+<div class="wrapper">
+    <app-nav-admin></app-nav-admin>
+    <div class="content">
+        <div class="card">
+            <div class="row">
+                <div class="col-md-8 cart">
+                    <div class="title">
+                        <div class="row">
+                            <div class="col">
+                                <h4><b>Administradores</b></h4>
+                            </div>
+                            <div class="col align-self-center text-right text-muted">{{ admins.length }} administradores</div>
+                        </div>
+                    </div>
+                    <div class="row border-top border-bottom">
+                        <div class="row main align-items-center">
+                            <div class="col-12 table-responsive">
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th>Nombre</th>
+                                            <th>Correo</th>
+                                            <th>Rol</th>
+                                            <th>Acciones</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr *ngFor="let admin of paginatedAdmins">
+                                            <td>{{ admin.nombre }} {{ admin.aPaterno }} {{ admin.aMaterno }}</td>
+                                            <td>{{ admin.correo }}</td>
+                                            <td>{{ admin.rol }}</td>
+                                            <td>
+                                                <button class="btn btn-primary" (click)="startEdit(admin)">Editar</button>
+                                                <button class="btn btn-danger" (click)="deleteAdmin(admin._id)">Eliminar</button>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <nav>
+                                    <ul class="pagination justify-content-center">
+                                        <li class="page-item" [class.disabled]="currentPage === 1">
+                                            <a class="page-link" (click)="changePage(currentPage - 1)" aria-label="Previous">
+                                                <span aria-hidden="true">&laquo;</span>
+                                            </a>
+                                        </li>
+                                        <li class="page-item"
+                                            *ngFor="let page of [].constructor(Math.ceil(admins.length / itemsPerPage)); let i = index"
+                                            [class.active]="currentPage === i + 1">
+                                            <a class="page-link" (click)="changePage(i + 1)">{{ i + 1 }}</a>
+                                        </li>
+                                        <li class="page-item" [class.disabled]="currentPage === Math.ceil(admins.length / itemsPerPage)">
+                                            <a class="page-link" (click)="changePage(currentPage + 1)" aria-label="Next">
+                                                <span aria-hidden="true">&raquo;</span>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </nav>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="col-md-4 summary">
+                    <div>
+                        <h5><b>{{ isEditMode ? 'Actualizar Usuario' : 'Agregar Usuario' }}</b></h5>
+                    </div>
+                    <hr>
+                    <form (ngSubmit)="saveAdmin()">
+                        <div class="row g-3">
+                            <div class="col-md-12">
+                                <label for="nombre" class="form-label">Nombre</label>
+                                <input type="text" class="form-control" id="nombre" [(ngModel)]="admin.nombre" name="nombre" />
+                            </div>
+                            <div class="col-md-6">
+                                <label for="aPaterno" class="form-label">Apellido Paterno</label>
+                                <input type="text" class="form-control" id="aPaterno" [(ngModel)]="admin.aPaterno" name="aPaterno" />
+                            </div>
+                            <div class="col-md-6">
+                                <label for="aMaterno" class="form-label">Apellido Materno</label>
+                                <input type="text" class="form-control" id="aMaterno" [(ngModel)]="admin.aMaterno" name="aMaterno" />
+                            </div>
+                            <div class="col-md-6">
+                                <label for="direccion" class="form-label">Dirección</label>
+                                <input type="text" class="form-control" id="direccion" [(ngModel)]="admin.direccion" name="direccion" />
+                            </div>
+                            <div class="col-md-6">
+                                <label for="telefono" class="form-label">Teléfono</label>
+                                <input type="text" class="form-control" id="telefono" [(ngModel)]="admin.telefono" name="telefono" />
+                            </div>
+                            <div class="col-md-12">
+                                <label for="correo" class="form-label">Correo</label>
+                                <input type="email" class="form-control" id="correo" [(ngModel)]="admin.correo" name="correo" />
+                            </div>
+                            <div class="col-md-12 position-relative" *ngIf="isEditMode">
+                                <label for="password" class="form-label">Contraseña:</label>
+                                <div class="input-group">
+                                    <input id="password" [type]="showPassword ? 'text' : 'password'" name="password" [(ngModel)]="admin.password"
+                                        class="form-control" [disabled]="!enablePassword" #passwordField="ngModel" [required]="enablePassword">
+                                    <button type="button"
+                                        class="btn btn-showpassword btn-outline-secondary position-absolute end-0 translate-middle-y"
+                                        (click)="togglePasswordVisibility()" [disabled]="!enablePassword">
+                                        <i class="bi" [ngClass]="showPassword ? 'bi-eye-slash' : 'bi-eye'"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="form-check mb-3" *ngIf="isEditMode">
+                                <input class="form-check-input" type="checkbox" id="enablePassword" [(ngModel)]="enablePassword"
+                                    (change)="togglePassword()">
+                                <label class="form-check-label" for="enablePassword">Modificar contraseña</label>
+                            </div>
+                            <div class="col-md-12" *ngIf="!isEditMode">
+                                <label for="password" class="form-label">Contraseña</label>
+                                <input type="password" class="form-control" id="password" [(ngModel)]="admin.password" name="password" />
+                            </div>
+                            <div class="col-md-12">
+                                <label for="categoria" class="form-label">Rol</label>
+                                <select class="form-control" id="categoria" [(ngModel)]="admin.rol" name="categoria">
+                                    <option *ngFor="let rol of roles" [value]="rol.nombre">{{ rol.nombre }}</option>
+                                </select>
+                            </div>
+                            <button type="submit" class="btn btn-primary">{{ isEditMode ? 'Actualizar' : 'Guardar'
+                                }}</button>
+                            <button type="button" class="btn btn-secondary" *ngIf="isEditMode" (click)="cancelEdit()">Cancelar</button>
+
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

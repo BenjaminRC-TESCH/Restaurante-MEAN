@@ -1,0 +1,103 @@
+.container {
+    max-width: 800px;
+    width: 100%;
+    padding: 0 20px;
+    margin-top: 6%;
+}
+
+.container-fluid {
+    padding: 20px;
+    background-color: black;
+    /* Fondo blanco con una opacidad del 80% */
+    border-radius: 10px;
+    /* Bordes redondeados */
+}
+
+.box-area {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    /* Adjust height to fill the parent container */
+}
+
+.img-container {
+    padding: 0;
+    /* Remove padding to ensure image fills the container */
+}
+
+.img-fluid {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    /* Ensure the image covers the div */
+}
+
+.preview {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 20px;
+    /* Add padding if needed */
+}
+
+.header-text {
+    text-align: center;
+}
+
+input.form-control {
+    margin-bottom: 15px;
+    /* Add margin if needed */
+}
+
+button.btn-primary {
+    width: 100%;
+}
+
+
+/*ESTILO PARA VERIFICAR CUENTA*/
+.mostrarformulario {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: white;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0);
+}
+
+.mostrarformulario form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 500px;
+    padding: 50px;
+}
+
+.mostrarformulario form input {
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.mostrarformulario form button {
+    width: 100%;
+    height: 40px;
+    border-radius: 40px;
+    background: #8BC34A;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    font-size: 1em;
+    font-weight: 600;
+    color: #fff;
+}
+
+.btn-showpassword {
+    color: #fff;
+    z-index: 100;
+    background-color: #0066ff;
+}

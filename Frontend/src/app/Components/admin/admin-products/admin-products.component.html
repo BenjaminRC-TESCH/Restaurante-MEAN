@@ -1,0 +1,95 @@
+<div class="wrapper">
+    <app-nav-admin></app-nav-admin>
+    <div class="content">
+        <div class="card">
+            <div class="row">
+                <div class="col-md-8 cart">
+                    <div class="title">
+                        <div class="row"> 
+                            <div class="col">
+                                <h4><b>Productos</b></h4>
+                            </div>
+                            <div class="col align-self-center text-right text-muted">{{ products.length }} productos
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row border-top border-bottom">
+                        <div class="row main align-items-center">
+                            <div class="col-12 table-responsive">
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th>Nombre</th>
+                                            <th>Descripción</th>
+                                            <th>Precio</th>
+                                            <th>Categoría</th>
+                                            <th>Imagen</th>
+                                            <th>Acciones</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr *ngFor="let product of products">
+                                            <td>{{ product.nombre }}</td>
+                                            <td>{{ product.descripcion }}</td>
+                                            <td>{{ product.precio }}</td>
+                                            <td>{{ product.categoria }}</td>
+                                            <td>
+                                                <img [src]="'http://localhost:3000/uploads/' + product.imagen" class="img-fluid rounded mx-auto d-block"
+                                                    style="height: 100px; width: 150px;">
+                                            </td>
+                                            <td>
+                                                <button class="btn btn-primary"
+                                                    (click)="startEdit(product)">Editar</button>
+                                                <button class="btn btn-danger"
+                                                    (click)="deleteProduct(product._id ?? '')">Eliminar</button>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 summary">
+                    <div>
+                        <h5><b>{{ isEditMode ? 'Actualizar Producto' : 'Agregar Producto' }}</b></h5>
+                    </div>
+                    <hr />
+                    <form (ngSubmit)="saveProduct()">
+                        <div class="row g-3">
+                            <div class="col-md-12">
+                                <label for="nombre" class="form-label">Nombre</label>
+                                <input type="text" class="form-control" id="nombre" [(ngModel)]="product.nombre"
+                                    name="nombre" />
+                            </div>
+                            <div class="col-md-12">
+                                <label for="descripcion" class="form-label">Descripción</label>
+                                <input type="text" class="form-control" id="descripcion"
+                                    [(ngModel)]="product.descripcion" name="descripcion" />
+                            </div>
+                            <div class="col-md-12">
+                                <label for="precio" class="form-label">Precio</label>
+                                <input type="number" class="form-control" id="precio" [(ngModel)]="product.precio"
+                                    name="precio" />
+                            </div>
+                            <div class="col-md-12">
+                                <label for="categoria" class="form-label">Categoría</label>
+                                <select class="form-control" id="categoria" [(ngModel)]="product.categoria" name="categoria">
+                                    <option *ngFor="let category of categories" [value]="category.nombre">{{ category.nombre }}</option>
+                                </select>
+                            </div>
+                            <div class="col-md-12">
+                                <label for="imagen" class="form-label">Imagen</label>
+                                <input type="file" class="form-control" id="imagen" (change)="onFileSelected($event)" />
+                            </div>
+                            <button type="submit" class="btn btn-primary">{{ isEditMode ? 'Actualizar' : 'Guardar'
+                                }}</button>
+                            <button type="button" class="btn btn-secondary" *ngIf="isEditMode"
+                                (click)="cancelEdit()">Cancelar</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

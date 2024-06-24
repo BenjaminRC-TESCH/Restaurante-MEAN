@@ -1,0 +1,24 @@
+<app-nav-users></app-nav-users>
+<div class="container" id="product-cards">
+    <h1>Productos</h1>
+    <div class="row" style="margin-top: 0px;">
+        <div class="col-lg-3 col-md-4 col-sm-6 col-12 py-3 py-md-0" *ngFor="let product of products">
+            <div class="card-shop animated-card">
+                <img [src]="'http://localhost:3000/uploads/' + product.imagen" class="img-fluid rounded mx-auto d-block"
+                    style="height: 200px; width: 350px;">
+                <div class="card-body">
+                    <h3>{{ product.nombre }}</h3>
+                    <p>{{ product.descripcion }}</p>
+                    <h5>$ {{ product.precio }}</h5>
+                    <button type="button" class="btn btn-dark btn-rounded button-carta"
+                        (click)="product._id && addToCart(product._id)">Agregar</button>
+                    <br>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+

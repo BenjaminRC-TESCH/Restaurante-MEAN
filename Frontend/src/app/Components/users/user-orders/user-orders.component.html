@@ -1,0 +1,59 @@
+<app-nav-users></app-nav-users>
+<div class="container mt-4">
+    <div class="card">
+        <div class="row">
+            <div class="col-md-12 cart">
+                <div class="title">
+                    <div class="row">
+                        <div class="col">
+                            <h4><b>Mis Órdenes</b></h4>
+                        </div>
+                    </div>
+                </div>
+    
+                <div class="row">
+                    <div class="row main align-items-center tittle">
+                        <div class="col-2 bold-text">
+                            No.
+                        </div>
+                        <div class="col bold-text">
+                            Productos
+                        </div>
+                        <div class="col bold-text">
+                            Estado
+                        </div>
+                        <div class="col bold-text">
+                            Dirección
+                        </div>
+                        <div class="col bold-text">
+                            Total
+                        </div>
+                    </div>
+                </div>
+    
+    
+                <div class="row border-top border-bottom" *ngFor="let order of orders; let i = index">
+                    <div class="row main align-items-center" >
+                        <div class="col-2">
+                            {{i + 1}}
+                        </div>
+                        <div class="col listProduct">
+                            <li *ngFor="let product of order.products">
+                                {{ product.contador }} X {{ product.nombre }}
+                            </li>
+                        </div>
+                        <div class="col">
+                            {{ order.estado }}
+                        </div>
+                        <div class="col">
+                            {{ order.direccion }}
+                        </div>
+                        <div class="col">
+                            {{ order.total }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

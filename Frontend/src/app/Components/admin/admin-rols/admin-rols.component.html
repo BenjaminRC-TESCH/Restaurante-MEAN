@@ -1,0 +1,88 @@
+<div class="wrapper">
+    <app-nav-admin></app-nav-admin>
+    <div class="content">
+        <div class="card">
+            <div class="row">
+                <div class="col-md-6 cart">
+                    <div class="title">
+                        <div class="row">
+                            <div class="col">
+                                <h4><b>Administradores</b></h4>
+                            </div>
+                            <div class="col align-self-center text-right text-muted">{{ roles.length }} roles
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row border-top border-bottom">
+                        <div class="row main align-items-center">
+                            <div class="col-12 table-responsive">
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th>Nombre</th>
+                                            <th>Acciones</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr *ngFor="let rol of paginatedRoles">
+                                            <td>{{ rol.nombre }}</td>
+
+                                            <td>
+                                                <button class="btn btn-primary"
+                                                    (click)="startEdit(rol)">Editar</button>
+                                                <button class="btn btn-danger"
+                                                    (click)="deleteRol(rol._id)">Eliminar</button>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <nav>
+                                    <ul class="pagination justify-content-center">
+                                        <li class="page-item" [class.disabled]="currentPage === 1">
+                                            <a class="page-link" (click)="changePage(currentPage - 1)"
+                                                aria-label="Previous">
+                                                <span aria-hidden="true">&laquo;</span>
+                                            </a>
+                                        </li>
+                                        <li class="page-item"
+                                            *ngFor="let page of [].constructor(Math.ceil(roles.length / itemsPerPage)); let i = index"
+                                            [class.active]="currentPage === i + 1">
+                                            <a class="page-link" (click)="changePage(i + 1)">{{ i + 1 }}</a>
+                                        </li>
+                                        <li class="page-item"
+                                            [class.disabled]="currentPage === Math.ceil(roles.length / itemsPerPage)">
+                                            <a class="page-link" (click)="changePage(currentPage + 1)"
+                                                aria-label="Next">
+                                                <span aria-hidden="true">&raquo;</span>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </nav>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 summary">
+                    <div>
+                        <h5><b>{{ isEditMode ? 'Actualizar Rol' : 'Agregar Rol' }}</b></h5>
+                    </div>
+                    <hr>
+                    <form (ngSubmit)="saveRol()">
+                        <div class="row g-3">
+                            <div class="col-md-12">
+                                <label for="nombre" class="form-label">Nombre</label>
+                                <input type="text" class="form-control" id="nombre" [(ngModel)]="rol.nombre"
+                                    name="nombre" />
+                            </div>
+
+                            <button type="submit" class="btn btn-primary">{{ isEditMode ? 'Actualizar' : 'Guardar'
+                                }}</button>
+                            <button type="button" class="btn btn-secondary" *ngIf="isEditMode"
+                                (click)="cancelEdit()">Cancelar</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

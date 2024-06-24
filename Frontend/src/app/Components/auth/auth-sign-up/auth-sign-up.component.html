@@ -1,0 +1,52 @@
+<app-nav-users></app-nav-users>
+
+<div class="container d-flex justify-content-center align-items-center min-vh-100 ">
+    <div class="col-md-6 border rounded-5 p-3 bg-white shadow">
+        <div class="row align-items-center">
+            <div class="header-text mb-4">
+                <h2>Bienvenido</h2>
+                <p>Ingresa tus datos para continuar.</p>
+            </div>
+            <form (submit)="signUp()" novalidate>
+                <div class="input-group mb-3">
+                    <input type="text" name="nombre" [(ngModel)]="user.nombre" class="form-control form-control-lg bg-light fs-6"
+                        placeholder="Nombre" value="">
+                </div>
+                <div class="input-group mb-3">
+                    <input type="text" name="aPaterno" [(ngModel)]="user.aPaterno" class="form-control form-control-lg bg-light fs-6"
+                        placeholder="Apellido Paterno" value="">
+                </div>
+                <div class="input-group mb-3">
+                    <input type="text" name="aMaterno" [(ngModel)]="user.aMaterno" class="form-control form-control-lg bg-light fs-6"
+                        placeholder="Apellido Materno" value="">
+                </div>
+                <div class="input-group mb-3">
+                    <input type="text" name="direccion" [(ngModel)]="user.direccion" class="form-control form-control-lg bg-light fs-6"
+                        placeholder="Dirección" value="">
+                </div>
+                <div class="input-group mb-3">
+                    <input type="text" name="telefono" [(ngModel)]="user.telefono" class="form-control form-control-lg bg-light fs-6"
+                        placeholder="Teléfono" value="">
+                </div>
+                <div class="input-group mb-3">
+                    <input type="email" name="correo" [(ngModel)]="user.correo" class="form-control form-control-lg bg-light fs-6"
+                        placeholder="Correo" value="">
+                </div>
+                <div class="input-group mb-3">
+                    <input type="password" name="password" [(ngModel)]="user.password" class="form-control form-control-lg bg-light fs-6"
+                        placeholder="Contraseña" value="">
+                </div>
+                <div class="input-group mb-3">
+                    <input type="password" name="confirmPassword" [(ngModel)]="user.confirmPassword" class="form-control form-control-lg bg-light fs-6"
+                        placeholder="Confirma tu contraseña" value="">
+                </div>
+                <div class="input-group mb-3">
+                    <button class="btn btn-lg btn-primary w-100 fs-6" type="submit">Regístrate</button>
+                </div>
+                <div class="row">
+                    <small>¿Ya tienes una cuenta? <a href="/login">Inicia</a></small>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
