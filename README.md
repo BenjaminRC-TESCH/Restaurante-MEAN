@@ -1,5 +1,5 @@
-# RestauranteApp
-RestauranteApp es una aplicación para la gestión de un restaurante, que incluye funcionalidades como un carrito de compra, autenticación por roles, verificación de cuenta por correo y manejo de imágenes para el catálogo de productos.
+# Restaurante-MEAN
+Restaurante-MEAN es una aplicación para la gestión de un restaurante, que incluye funcionalidades como un carrito de compra, autenticación por roles, verificación de cuenta por correo y manejo de imágenes para el catálogo de productos.
 
 ## Tecnologías Utilizadas
 ### Frontend
